@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var cadena= "hola";
+        let numero=12;
+        console.log(numero);
+
+        //Vectores
+        const vector = ['Lunes', 'Martes','SUnday'];
+        console.log(vector[0]);
+        //Objetos
+        //Objeto clave valor
+        const objeto = {"cedula":"1805162444","nombre":"Jsvi","apellido":"Duran"};
+        console.log(objeto.apellido);
+        //JSON
+        let JSON1 =  {
+                    "cedula":"1847512001",
+                    "Nombre":"Carlos",
+                    "Apellido":"Galindez",
+                    "Instruccion" :[{"primaria":"Json Miller","secundaria":"Guayaquil"}],
+                    "Edad":40
+                    }
+        
+        console.log(JSON1);
+        const persona = '{"nombre":"Javi","apellido":"Duran"}'
+        console.log(persona);
+        let mijson  = JSON.parse(persona);
+        console.log(mijson);
+        let aTexto = JSON.stringify(objeto);
+        console.log(aTexto);
+    </script>
+</body>
+</html>

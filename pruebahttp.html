@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // let xhttp = new XMLHttpRequest();
+        // xhttp.open("GET", "JSON.json");
+        // xhttp.send();
+
+
+        // xhttp.onreadystatechange=function(){
+        // if(xhttp.readyState ==4 && xhttp.status==200){
+
+        //     console.log("El valor de la propiedades status es "+ xhttp.status);
+        //     console.log("El valor de la propiedades readyState es "+ xhttp.readyState); 
+        //     console.log("El textop eS :"+xhttp.responseText);
+        //     let informacion = JSON.parse(xhttp.responseText);
+        //     console.log(informacion);
+        //     console.log(informacion.Cedula);
+        // }
+
+        // fetch("JSON.json")
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+
+        // $.ajax({
+        //     url: "JSON.json",
+        //     type: "GET",
+        //     dataType: "json",
+        //     success: function (jsonData) {
+        //         console.log(jsonData);
+
+        //     }, error: function (error) {
+        //         console.log("error inesperado: " + error)
+        //     }
+        // });
+
+        async function cargar() {
+            try {
+                const response = await fetch('JSON.json');
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Error al cargar el JSON:', error);
+            }
+        }
+
+        cargar();
+
+    </script>
+</body>
+
+</html>

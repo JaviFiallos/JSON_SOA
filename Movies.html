@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        let movies = [];
+
+        // Función para cargar el archivo JSON
+        function cargarPeliculas() {
+            fetch("Movies.json")
+                .then(response => response.json())
+                .then(data => {
+                    movies = data;
+                    console.log("=============================================");
+                    listarInformacion(movies);
+                    console.log("=============================================");
+                    contarActores(movies);
+                    console.log("=============================================");;
+                    buscarPorPalabras(movies, 'crime', 'prisoner'); 
+                    console.log("=============================================");
+                    buscarPorActor(movies, 'Morgan Freeman'); 
+                })
+                .catch(error => console.log('Error al cargar las películas:', error));
+        }
+
+        // 1.- Listar información: título, año y duración de todas las películas.
+        function listarInformacion(movies) {
+            console.log("Lista de Títulos, Años y Duraciones");
+            console.log("=============================================");
+            movies.forEach(movie => {
+                console.log(`Título: ${movie.title}, Año: ${movie.year}, Duración: ${movie.duration}`);
+            });
+        }
+
+        // 2.- Contar información: Mostrar los títulos y el número de actores/actrices de cada película.
+        function contarActores(movies) {
+            console.log("Títulos y Número de Actores/Actrices");
+            console.log("=============================================");
+            movies.forEach(movie => {
+                console.log(`Título: ${movie.title}, Número de actores: ${movie.actors.length}`);
+            });
+        }
+
+        // 3.- Buscar o filtrar información: Mostrar las películas que contengan en la sinopsis dos palabras dadas.
+        function buscarPorPalabras(movies, palabra1, palabra2) {
+            console.log(`Películas que contienen '${palabra1}' y '${palabra2}' en la sinopsis`);
+            movies.forEach(movie => {
+                const storyline = movie.storyline.toLowerCase();
+                if (storyline.includes(palabra1.toLowerCase()) && storyline.includes(palabra2.toLowerCase())) {
+                    console.log(`Título: ${movie.title}`);
+                }
+            });
+        }
+
+        // 4.- Buscar información relacionada: Mostrar las películas en las que ha trabajado un actor dado.
+        function buscarPorActor(movies, actor) {
+            console.log(`Películas en las que ha trabajado ${actor}`);
+            movies.forEach(movie => {
+                let actorEncontrado = false;
+                for (let i = 0; i < movie.actors.length; i++) {
+                    if (movie.actors[i].toLowerCase() === actor.toLowerCase()) {
+                        actorEncontrado = true;
+                        break;
+                    }
+                }
+                if (actorEncontrado) {
+                    console.log(`Título: ${movie.title}`);
+                }
+            });
+        }
+
+        cargarPeliculas();
+
+    </script>
+
+</body>
+
+</html>
